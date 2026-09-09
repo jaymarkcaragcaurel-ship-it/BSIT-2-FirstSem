@@ -1,0 +1,89 @@
+public class Patient {
+    private int patientId;
+    private String name;
+    private int age;
+    private String diagnosis;
+    private int roomNumber;
+    private double[] vitalSigns;
+    private int vitalSignCount;
+
+    public Patient(int patientId, String name, int age, String diagnosis, int roomNumber) {
+        this.patientId = patientId;
+        this.name = name;
+        this.age = age;
+        this.diagnosis = diagnosis;
+        this.roomNumber = roomNumber;
+        this.vitalSigns = new double[5];
+        this.vitalSignCount = 0;
+    }
+
+    public void addVitalSign(double reading) {
+        if (vitalSignCount < 5) {
+            vitalSigns[vitalSignCount] = reading;
+            vitalSignCount = vitalSignCount + 1;
+            System.out.println("Vital sign added successfully.");
+        } else {
+            System.out.println("Error: Maximum of five vital sign readings already reached.");
+        }
+    }
+
+    public double calcAverageVitalSign() {
+        if (vitalSignCount == 0) {
+            return 0.0;
+        } else {
+            double sum = 0.0;
+            for (int i = 0; i < vitalSignCount; i++) {
+                sum = sum + vitalSigns[i];
+            }
+            double average = sum / vitalSignCount;
+            return average;
+        }
+    }
+
+    public double findHighestReading() {
+        if (vitalSignCount == 0) {
+            return 0.0;
+        } else {
+            double highest = vitalSigns[0];
+            for (int i = 1; i < vitalSignCount; i++) {
+                if (vitalSigns[i] > highest) {
+                    highest = vitalSigns[i];
+                }
+            }
+            return highest;
+        }
+    }
+
+    public double findLowestReading() {
+        if (vitalSignCount == 0) {
+            return 0.0;
+        } else {
+            double lowest = vitalSigns[0];
+            for (int i = 1; i < vitalSignCount; i++) {
+                if (vitalSigns[i] < lowest) {
+                    lowest = vitalSigns[i];
+                }
+            }
+            return lowest;
+        }
+    }
+
+    public void displayInfo() {
+        System.out.println("Patient ID: " + patientId);
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Diagnosis: " + diagnosis);
+        System.out.println("Room Number: " + roomNumber);
+        System.out.printf("Average Vital Sign: %.2f%n", calcAverageVitalSign());
+        System.out.printf("Highest Vital Sign: %.2f%n", findHighestReading());
+        System.out.printf("Lowest Vital Sign: %.2f%n", findLowestReading());
+    }
+
+    public int getPatientId() {
+        return patientId;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
