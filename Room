@@ -1,0 +1,63 @@
+public class Room {
+    private int roomNumber;
+    private int floorNumber;
+    private String roomType;
+    private int maxCapacity;
+    private Patient[] patients;
+    private int patientCount;
+
+    public Room(int roomNumber, int floorNumber, String roomType, int maxCapacity) {
+        this.roomNumber = roomNumber;
+        this.floorNumber = floorNumber;
+        this.roomType = roomType;
+        this.maxCapacity = maxCapacity;
+        this.patients = new Patient[maxCapacity];
+        this.patientCount = 0;
+    }
+
+    public void addPatient(Patient patient) {
+        if (patientCount < maxCapacity) {
+            patients[patientCount] = patient;
+            patientCount = patientCount + 1;
+            System.out.println("Patient added to room successfully.");
+        } else {
+            System.out.println("Error: Room is full.");
+        }
+    }
+
+    public void removePatient(Patient patient) {
+        int foundIndex = -1;
+        for (int i = 0; i < patientCount; i++) {
+            if (patients[i] == patient) {
+                foundIndex = i;
+            }
+        }
+
+        if (foundIndex != -1) {
+            for (int i = foundIndex; i < patientCount - 1; i++) {
+                patients[i] = patients[i + 1];
+            }
+            patients[patientCount - 1] = null;
+            patientCount = patientCount - 1;
+            System.out.println("Patient removed from room successfully.");
+        } else {
+            System.out.println("Error: Patient not found in this room.");
+        }
+    }
+
+    public int getCurrentPatientCount() {
+        return patientCount;
+    }
+
+    public void displayInfo() {
+        System.out.println("Room Number: " + roomNumber);
+        System.out.println("Room Type: " + roomType);
+        System.out.println("Floor Number: " + floorNumber);
+        System.out.println("Max Capacity: " + maxCapacity);
+        System.out.println("Current Patient Count: " + patientCount);
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+}
