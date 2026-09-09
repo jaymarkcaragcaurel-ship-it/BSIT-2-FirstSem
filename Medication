@@ -1,0 +1,41 @@
+public class Medication {
+    private int medicationId;
+    private String medicationName;
+    private String dosage;
+    private String frequency;
+    private double price;
+
+    public Medication(int medicationId, String medicationName, String dosage, String frequency, double price) {
+        this.medicationId = medicationId;
+        this.medicationName = medicationName;
+        this.dosage = dosage;
+        this.frequency = frequency;
+        this.price = price;
+    }
+
+    public void displayInfo() {
+        System.out.println("Medication ID: " + medicationId);
+        System.out.println("Medication Name: " + medicationName);
+        System.out.println("Dosage: " + dosage);
+        System.out.println("Frequency: " + frequency);
+        System.out.printf("Price: %.2f%n", price);
+    }
+
+    public double calcTotalCost(int quantity) {
+        if (quantity >= 0) {
+            double totalCost = quantity * price;
+            return totalCost;
+        } else {
+            System.out.println("Error: Quantity cannot be negative.");
+            return 0.0;
+        }
+    }
+
+    public int getMedicationId() {
+        return medicationId;
+    }
+
+    public String getMedicationName() {
+        return medicationName;
+    }
+}
