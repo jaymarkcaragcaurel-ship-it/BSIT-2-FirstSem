@@ -1,0 +1,50 @@
+public class Doctor {
+    private int doctorId;
+    private String name;
+    private String specialty;
+    private int yearsOfExperience;
+    private double consultationFee;
+
+    public Doctor(int doctorId, String name, String specialty, int yearsOfExperience, double consultationFee) {
+        this.doctorId = doctorId;
+        this.name = name;
+        this.specialty = specialty;
+        this.yearsOfExperience = yearsOfExperience;
+        this.consultationFee = consultationFee;
+    }
+
+    public void viewInfo() {
+        System.out.println("Doctor ID: " + doctorId);
+        System.out.println("Name: " + name);
+        System.out.println("Specialty: " + specialty);
+        System.out.println("Years of Experience: " + yearsOfExperience);
+        System.out.printf("Consultation Fee: %.2f%n", consultationFee);
+    }
+
+    public void updateConsultationFee(double newFee) {
+        if (newFee >= 0) {
+            consultationFee = newFee;
+            System.out.println("Consultation fee updated successfully.");
+        } else {
+            System.out.println("Error: Consultation fee cannot be negative.");
+        }
+    }
+
+    public double calcEstimatedIncome(int patientsHandled) {
+        if (patientsHandled < 0) {
+            System.out.println("Error: Number of patients cannot be negative.");
+            return 0.0;
+        } else {
+            double estimatedIncome = patientsHandled * consultationFee;
+            return estimatedIncome;
+        }
+    }
+
+    public int getDoctorId() {
+        return doctorId;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
