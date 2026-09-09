@@ -1,0 +1,126 @@
+public class Hospital {
+    private String hospitalName;
+    private String address;
+    private String contactNumber;
+    private Doctor[] doctors;
+    private Nurse[] nurses;
+    private Patient[] patients;
+    private Department[] departments;
+    private Room[] rooms;
+
+    public Hospital(String hospitalName, String address, String contactNumber) {
+        this.hospitalName = hospitalName;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.doctors = new Doctor[20];
+        this.nurses = new Nurse[30];
+        this.patients = new Patient[50];
+        this.departments = new Department[10];
+        this.rooms = new Room[30];
+    }
+
+    private int countArray(Object[] array) {
+        int count = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != null) {
+                count = count + 1;
+            }
+        }
+        return count;
+    }
+
+    public void addDoctor(Doctor doctor) {
+        int position = -1;
+        for (int i = 0; i < doctors.length; i++) {
+            if (doctors[i] == null && position == -1) {
+                position = i;
+            }
+        }
+
+        if (position != -1) {
+            doctors[position] = doctor;
+            System.out.println("Doctor added successfully.");
+        } else {
+            System.out.println("Error: Doctor array is full.");
+        }
+    }
+
+    public void addNurse(Nurse nurse) {
+        int position = -1;
+        for (int i = 0; i < nurses.length; i++) {
+            if (nurses[i] == null && position == -1) {
+                position = i;
+            }
+        }
+
+        if (position != -1) {
+            nurses[position] = nurse;
+            System.out.println("Nurse added successfully.");
+        } else {
+            System.out.println("Error: Nurse array is full.");
+        }
+    }
+
+    public void addPatient(Patient patient) {
+        int position = -1;
+        for (int i = 0; i < patients.length; i++) {
+            if (patients[i] == null && position == -1) {
+                position = i;
+            }
+        }
+
+        if (position != -1) {
+            patients[position] = patient;
+            System.out.println("Patient added successfully.");
+        } else {
+            System.out.println("Error: Patient array is full.");
+        }
+    }
+
+    public void addDepartment(Department department) {
+        int position = -1;
+        for (int i = 0; i < departments.length; i++) {
+            if (departments[i] == null && position == -1) {
+                position = i;
+            }
+        }
+
+        if (position != -1) {
+            departments[position] = department;
+            System.out.println("Department added successfully.");
+        } else {
+            System.out.println("Error: Department array is full.");
+        }
+    }
+
+    public void addRoom(Room room) {
+        int position = -1;
+        for (int i = 0; i < rooms.length; i++) {
+            if (rooms[i] == null && position == -1) {
+                position = i;
+            }
+        }
+
+        if (position != -1) {
+            rooms[position] = room;
+            System.out.println("Room added successfully.");
+        } else {
+            System.out.println("Error: Room array is full.");
+        }
+    }
+
+    public void displayHospitalInfo() {
+        System.out.println("Hospital Name: " + hospitalName);
+        System.out.println("Address: " + address);
+        System.out.println("Contact Number: " + contactNumber);
+        System.out.println("Total Doctors: " + countArray(doctors));
+        System.out.println("Total Nurses: " + countArray(nurses));
+        System.out.println("Total Patients: " + countArray(patients));
+        System.out.println("Total Departments: " + countArray(departments));
+        System.out.println("Total Rooms: " + countArray(rooms));
+    }
+
+    public int getTotalPatients() {
+        return countArray(patients);
+    }
+}
