@@ -1,0 +1,51 @@
+public class MedicalRecord {
+    private int recordId;
+    private String diagnosis;
+    private String treatment;
+    private String dateOfRecord;
+    private Medication[] medications;
+    private int medicationCount;
+
+    public MedicalRecord(int recordId, String diagnosis, String treatment, String dateOfRecord) {
+        this.recordId = recordId;
+        this.diagnosis = diagnosis;
+        this.treatment = treatment;
+        this.dateOfRecord = dateOfRecord;
+        this.medications = new Medication[10];
+        this.medicationCount = 0;
+    }
+
+    public void addMedication(Medication medication) {
+        if (medicationCount < medications.length) {
+            medications[medicationCount] = medication;
+            medicationCount = medicationCount + 1;
+            System.out.println("Medication added successfully.");
+        } else {
+            System.out.println("Error: Medication array is full.");
+        }
+    }
+
+    public void displayRecord() {
+        System.out.println("Record ID: " + recordId);
+        System.out.println("Diagnosis: " + diagnosis);
+        System.out.println("Treatment: " + treatment);
+        System.out.println("Date of Record: " + dateOfRecord);
+        System.out.println("Total Medications: " + medicationCount);
+
+        if (medicationCount == 0) {
+            System.out.println("This record contains no medications.");
+        } else {
+            for (int i = 0; i < medicationCount; i++) {
+                medications[i].displayInfo();
+            }
+        }
+    }
+
+    public int countMedications() {
+        return medicationCount;
+    }
+
+    public int getRecordId() {
+        return recordId;
+    }
+}
